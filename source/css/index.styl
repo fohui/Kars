@@ -1,0 +1,443 @@
+@import "reset"
+global-reset()
+
+/*-----------------------------------------------------------------------------------*/
+/*  0.  Util
+/*-----------------------------------------------------------------------------------*/
+clearfix()
+	&::before,
+	&::after
+		content: " "
+		display: table
+	&::after 
+		clear: both
+	zoom:1
+partition()
+	transform: rotate(45deg)
+	display: inline-block
+	padding: 0 10px
+mq-article()
+	.article
+		.article-meta
+			float: none
+			width: 100%
+		.article-body
+			float: none
+			width: 100%
+mq-archivesbyyear()
+	.archives-byyear
+		.archives-year
+			position: static
+			text-align: center
+
+@font-face {
+	font-family: 'iconfont';
+    src: url('iconfont.eot'); 
+    src: url('iconfont.eot?#iefix') format('embedded-opentype'), 
+    url('iconfont.woff') format('woff'), 
+    url('iconfont.ttf') format('truetype'), 
+    url('iconfont.svg#iconfont') format('svg'); 
+}
+.iconfont {
+    font-family:"iconfont" !important
+    font-size:32px;font-style:normal
+    -webkit-font-smoothing: antialiased
+    -webkit-text-stroke-width: 0.2px
+    -moz-osx-font-smoothing: grayscale
+}
+/*-----------------------------------------------------------------------------------*/
+/*  1.  Variable
+/*-----------------------------------------------------------------------------------*/
+//Colors
+color-textdefault = #333
+color-essential = #f29100
+color-subcolor = #4b79cf
+color-background = #fff
+color-border = #ddd
+color-codebg = #FFF8DC
+//Fonts
+font-size = 14px
+line-height = 1.8
+font-weight = 300
+font-family = PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei
+//Layout
+article-padding = 20px
+section-margin = 50px
+// Media queries
+mq-mobile = "screen and (max-width: 479px)"
+mq-tablet = "screen and (min-width: 480px) and (max-width: 768px)"
+mq-normal = "screen and (min-width: 769px)"
+/*-----------------------------------------------------------------------------------*/
+/*  2.  Typography base typo.css
+/*-----------------------------------------------------------------------------------*/
+body 
+	font: font-weight font-size/line-height font-family
+	color: color-textdefault
+
+h1, h2, h3, h4, h5, h6 	
+	font-weight: 100
+	color: #000
+	line-height: 1.35
+
+/* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
+h1, h2, h3, h4, h5, h6 
+	margin-top: 1.2em;
+	margin-bottom: 0.6em;
+	line-height: 1.35;
+h1
+	font-size: 2em
+
+h2
+	font-size: 1.8em
+
+h3
+	font-size: 1.6em
+
+h4
+	font-size: 1.4em
+
+h5, h6
+	font-size: 1.2em
+
+/* 保证块/段落之间的空白隔行 */
+.typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr, .typo table, blockquote 
+	margin-bottom: 1.2em
+
+
+/* 块/段落引用 */
+blockquote
+	color: #999;
+	position: relative;
+	font-weight: 400;
+	border-left: 2px solid color-essential;
+	padding-left: 1em;
+	margin: 1em 3em 1em 2em;
+
+@media only screen and ( max-width: 640px ) 
+	blockquote 
+		margin: 1em 0;
+
+/* 解决浏览器显示代码片段时缩减太宽 */
+pre 
+	tab-size: 2
+
+/* 一致化 horizontal rule */
+hr 
+	border: none
+	border-bottom: 1px solid #cfcfcf
+	margin-bottom: 0.8em
+	height: 10px
+	width: 500px
+
+/* 在文章中，应该还原 ul 和 ol 的样式 */
+.typo ul
+	margin-left: 1.3em;
+	list-style: disc;
+.typo ol
+	list-style: decimal;
+	margin-left: 1.9em;
+.typo li ul, .typo li ol
+	margin-bottom: 0.8em;
+	margin-left: 2em;
+.typo li ul
+	list-style: circle;
+
+/* 在文章中应用 table 基本格式 */
+.typo table th, .typo table td, .typo-table th, .typo-table td, .typo table caption 
+	border: 1px solid color-border
+	padding: 0.5em 1em
+	color: #666
+.typo table th, .typo-table th 
+	background: #fbfbfb
+.typo table thead th, .typo-table thead th 
+	background: #f1f1f1
+.typo table caption 
+	border-bottom: none
+
+/* 让链接在 hover 状态下显示下划线 */
+a 
+	color: color-essential
+a:hover
+	color: color-textdefault
+
+/* Responsive images */
+.typo img 
+	max-width: 100%;
+
+//语法高亮
+@import "highlight"
+
+/*-----------------------------------------------------------------------------------*/
+/*  3.  Main Content Styles
+/*-----------------------------------------------------------------------------------*/
+
+#header 
+	height 200px
+	margin-bottom: 1.2em
+	.headerbg
+		position:relative
+		height: 100%
+		background: linear-gradient(230deg,#a24bcf,#4b79cf,#4bc5cf)
+		background-size: 5% 25%;
+		-webkit-animation: movebg 50s ease infinite;
+		-moz-animation: movebg 50s ease infinite;
+		animation: movebg 50s ease infinite;
+		.header-title
+			position: absolute
+			margin-top: -1.2em
+			font-size: 2em
+			color: color-background
+			top: 50%
+			left: 50%
+			transform: translate(-50%,-50%)
+			h1
+				color: inherit
+				a
+					color: inherit
+	
+#main
+	width: 80%
+	min-height: 400px;
+	margin: 0 auto
+	border-bottom: 1px solid color-border
+	.wrap.homepage
+		clearfix()
+		.article
+			clearfix()
+			.article-meta
+				float:left
+				width:20%
+				margin-right: 5%
+			.article-body
+				float:right
+				width: 75%
+	.wrap.articlepage
+		width: 70%
+		margin: 0 auto
+		.article-meta
+			position: absolute
+			left: -250px
+			top: 0
+			max-width: 250px
+	.wrap.otherpage
+		.article-date
+			display: none;
+
+.content
+	.breadcrumbs
+		margin-top: 1.2em;
+		margin-bottom: 0.6em;
+		line-height: 1.35;
+		font-weight: 100
+		font-size: 1.2em
+		padding-left: article-padding
+		.partition
+			partition()
+
+
+.article
+	position: relative
+	padding: article-padding
+	animation: fadeUp .8s;
+
+.article-meta
+	.article-date
+		color: #999
+	.article-title 
+		a
+			text-decoration: none;
+				
+#main-nav
+	display: none
+
+.archives-byyear
+	position: relative
+	margin-bottom: 25px
+	animation: fadeUp 1s;
+	.archives-year
+		position: absolute
+		left: -100px
+		h1
+			font-size: 3em
+
+.archives-item
+	display: table
+	height: 100px
+	width: 100%
+	position: relative
+	vertical-align: middle
+	text-align: center
+	.article-meta
+		display: table-cell
+		vertical-align: middle;
+		cursor: pointer
+		a
+			color: color-textdefault
+			text-decoration: none
+	.color
+		position: absolute
+		top:0
+		height: 100%
+		width:0
+		transition: background-color 300ms ease, width 400ms cubic-bezier(0.86, 0, 0.07, 1)
+		z-index: -1;
+	.color.left
+		left: 50%
+	.color.right
+		right: 50%
+	&:hover
+		color: #fff 
+		a,
+		.article-date
+			color: #fff
+		.color
+			background-color: color-subcolor
+			width: 50%;
+
+.pagination-wrap
+	text-align: center
+	.pagination
+		display: inline-block
+		h6
+			display: inline-block
+		.partition
+			partition()
+
+#toTop
+	display: none
+	animation-duration: .8s;
+	width: 0
+	height: 0
+	border: 40px solid color-essential
+	border-top-color: transparent
+	border-left-color: transparent
+	position: fixed
+	right: 0
+	bottom: 0
+	&:hover
+		cursor: pointer
+	.indicator
+		position: relative
+		top: -10px
+		color: color-background
+
+#footer
+	background: linear-gradient(to bottom, #fff 0%,#fff 50%,#4b79cf 50%, #4b79cf 100%)
+	.footer-container
+		text-align: center
+		vertical-align: bottom
+		background: url(bottombg.svg)
+		background-position: top left
+		background-repeat: no-repeat
+	.wrap
+		clearfix()
+		display:inline-block
+		margin-top: 200px
+	.personallogo
+		float: left;
+		margin-right: section-margin *4
+		svg
+			width: 100px
+			height: 200px
+			cursor: pointer
+	.somelink
+		float:left;
+		text-align: left
+		.label
+			padding-bottom: 10px
+			color: color-essential
+			h3
+				padding-left: article-padding
+				margin-top: 0
+				a
+					color: color-background
+					text-decoration: none
+					&::after
+						content: " "
+						display: block
+						height: 1px;
+						width: 0;
+						background-color: color-background
+						transition: width .5s;
+					&:hover::after
+						width: 50%
+
+
+					
+
+/*-----------------------------------------------------------------------------------*/
+/*  4.  Responsive
+/*-----------------------------------------------------------------------------------*/
+@media mq-mobile
+	#main
+		width: 100%
+		min-width: 320px
+		.wrap.articlepage
+			width: 90%
+			.breadcrumbs h6
+				font-size: 1em
+			.article
+				padding: 0
+				.article-meta
+					position: static
+					max-width: 100%
+		.wrap.homepage
+			mq-article()
+		.wrap.archivespage
+			mq-archivesbyyear()
+
+	#footer
+		.personallogo
+			float: none;
+			margin-right: 0
+		.somelink
+			float: none;
+
+@media mq-tablet
+	#main
+		width:100%
+		.wrap.articlepage
+			width:80%
+			.article
+				.article-meta
+					position: static
+					max-width: 100%
+		.wrap.homepage
+			mq-article()
+		.wrap.archivespage
+			mq-archivesbyyear()
+			
+.ds-post-button
+	background-color: color-subcolor
+/*-----------------------------------------------------------------------------------*/
+/*  5.  Animation
+/*-----------------------------------------------------------------------------------*/
+@keyframes movebg {
+    0%{background-position:0% 84%}
+    50%{background-position:100% 16%}
+    100%{background-position:0% 84%}
+}
+@keyframes fadeUp {
+	from {
+		opacity: 0;
+        -webkit-transform: translate3d(0, 20px, 0);
+		transform: translate3d(0, 20px, 0);
+	}
+	to {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
+}
+@keyframes fadeDown {
+	from {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
+	to {
+		opacity: 0;
+		-webkit-transform: translate3d(0, 20px, 0);
+		transform: translate3d(0, 20px, 0);
+	}
+}

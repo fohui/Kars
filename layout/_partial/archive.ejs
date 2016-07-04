@@ -1,0 +1,48 @@
+<div class="wrap <%= archiveType %>">
+<% if (archiveType=='homepage') { %>
+	<% page.posts.each(function(post){ %>
+
+		<%- partial('_partial/article', {post: post, archiveType: archiveType}) %>
+
+	<% }) %>
+<% } else if (archiveType=='archivespage'){ %>
+	
+	<% var last; %>
+	<% page.posts.each(function(post, i){ %>
+		<% var year=post.date.year(); %>
+		<% if(last != year){ %>
+			<% if(last != null){ %></div></div><% } %>
+			<% last=year; %>
+			<div class="archives-byyear">
+				<div class="archives-year">
+					<h1>
+					<a href="<%- url_for(config.archive_dir + '/' + year) %>"> <%= year %> </a>
+					</h1>
+				</div>
+				<div class="archives-list">
+		<% } %>
+		<%- partial('archive-post',{post:post}) %>
+	<% }) %>
+	<% if(page.posts.length){ %>
+			</div></div>
+	<%	} %>
+	
+<% } %>
+<% if(page.total > 1){ %>
+<div class="pagination-wrap">
+	<div class="pagination">
+	<% if (page.prev) { %>
+		<h6><a data-pjax class="newer-posts" href="<%- config.root %><%- page.prev_link %>">Newer</a></h6>
+		<span class="partition">|</span>
+	<% } %>
+		
+   		<h6 class="page-number"> <%- page.current %> </h6>
+   		
+	<% if (page.next) { %>
+		<span class="partition">|</span>
+   		<h6><a data-pjax class="older-posts" href="<%- config.root %><%- page.next_link %>">Older</a></h6>
+   <% } %>
+</div>
+</div>
+<% } %>
+</div>

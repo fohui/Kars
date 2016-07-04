@@ -1,0 +1,11 @@
+<% if(type!='frompost'){ %>
+	<h1 class="article-title">
+		<a href="<%- url_for(post.path) %>" itemprop="url">
+			<%= post.title %>
+		</a>
+	</h1>
+<% } else { %>
+	<h1 class="article-title article-title-frompost" itemprop="name">
+		<%= post.title %>
+	</h1>
+<% } %>

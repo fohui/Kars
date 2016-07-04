@@ -1,0 +1,122 @@
+//https://highlightjs.org/static/demo/ arduino-light
+highlight-background = #fafafa
+highlight-foreground = #cccccc
+highlight-comment = rgba(149,165,166,.8)
+highlight-line = #434f54
+highlight-keyword = #00979d
+highlight-variable = #00979d
+highlight-number = #8A7B52
+highlight-string = #005C5F
+highlight-function = #728e00
+highlight-title = #880000
+highlight-buildin = #D35400
+
+font-blockcode = "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace
+
+$code-block
+  background: highlight-background
+  margin: 0 article-padding * -1
+  margin-bottom: 1.2em
+  padding: 15px article-padding
+  border-style: solid
+  border-color: color-border
+  border-width: 1px 0
+  overflow: auto
+  color: color-essential
+  line-height: font-size * line-height
+
+$line-numbers
+  color: color-essential
+  font-size: 0.85em
+
+.article-body
+  pre, code
+    font-family: font-blockcode
+  code
+    font-weight: 300
+    color: color-essential
+    padding: 0 0.3em
+  pre
+    @extend $code-block
+    code
+      background: none
+      text-shadow: none
+      padding: 0
+  .highlight
+    @extend $code-block
+    pre
+      border: none
+      margin: 0
+      padding: 0
+    table
+      margin: 0
+      width: auto
+    td
+      border: none
+      padding: 0
+    figcaption
+      clearfix()
+      font-size: 0.85em
+      color: highlight-comment
+      line-height: 1em
+      margin-bottom: 1em
+      a
+        float: right
+    .gutter pre
+      @extend $line-numbers
+      text-align: right
+      padding-right: 20px
+    .line
+      height: font-size * line-height
+      color: highlight-line
+
+pre
+  .comment
+    color: highlight-comment
+  .title
+    color: highlight-title
+    font-weight: bold
+  .variable
+  .attribute
+  .tag
+  .regexp
+  .ruby .constant
+  .xml .tag .title
+  .xml .pi
+  .xml .doctype
+  .html .doctype
+  .css .id
+  .css .class
+  .css .pseudo
+    color: highlight-variable
+  .number
+  .preprocessor
+  .params
+  .constant
+    color: highlight-number
+  .built_in
+  .literal
+    color: highlight-buildin
+  .class
+  .ruby .class .title
+  .css .rules .attribute
+    color: highlight-variable
+  .string
+  .value
+  .inheritance
+  .header
+  .ruby .symbol
+  .xml .cdata
+    color: highlight-string
+  .function
+  .python .decorator
+  .python .title
+  .ruby .function .title
+  .ruby .title .keyword
+  .perl .sub
+  .javascript .title
+  .coffeescript .title
+    color: highlight-function
+  .keyword
+  .javascript .function
+    color: highlight-keyword
