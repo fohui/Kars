@@ -5,6 +5,9 @@
 			<% if(archiveType=="homepage"){ %>
 				<%- post.excerpt %>
 			<% } else { %> 
+				<time class="article-date-true" datetime="<%= date_xml(post.date) %>" itemprop="datePublished">
+					<%= date(post.date, null) %>
+				</time>
 				<%- post.content %>
 				<% if (post.comments && config.duoshuo_shortname){ %>
 	 <section id="comments">

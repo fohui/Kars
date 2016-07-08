@@ -370,6 +370,10 @@ pre .javascript .function {
 /*-----------------------------------------------------------------------------------*/
 /*  3.  Main Content Styles
 /*-----------------------------------------------------------------------------------*/
+::selection {
+  background: #4b79cf;
+  color: #fff;
+}
 #header {
   height: 200px;
   margin-bottom: 1.2em;
@@ -440,10 +444,20 @@ pre .javascript .function {
   margin: 0 auto;
 }
 #main .wrap.articlepage .article-meta {
+  margin: 0 -200px;
+}
+#main .wrap.articlepage .article-meta .article-date {
+  display: none;
+}
+#main .wrap.articlepage .article-meta .article-title {
+  font-size: 3em;
+  margin-bottom: 2em;
+  font-weight: 200;
+}
+#main .wrap.articlepage .article-date-true {
   position: absolute;
-  left: -250px;
-  top: 0;
-  max-width: 250px;
+  margin-left: -200px;
+  color: #999;
 }
 #main .wrap.otherpage .article-date {
   display: none;
@@ -640,8 +654,9 @@ pre .javascript .function {
     padding: 0;
   }
   #main .wrap.articlepage .article .article-meta {
-    position: static;
     max-width: 100%;
+    margin: 1em 0 0.5em;
+    font-weight: 100;
   }
   #main .wrap.homepage .article .article-meta {
     float: none;
@@ -671,8 +686,9 @@ pre .javascript .function {
     width: 80%;
   }
   #main .wrap.articlepage .article .article-meta {
-    position: static;
     max-width: 100%;
+    margin: 1em 0 0.5em;
+    font-weight: 100;
   }
   #main .wrap.homepage .article .article-meta {
     float: none;

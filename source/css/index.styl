@@ -24,6 +24,11 @@ mq-article()
 		.article-body
 			float: none
 			width: 100%
+mq-article-meta()
+	.article-meta
+		max-width: 100%
+		margin:1em 0 .5em;
+		font-weight: 100;
 mq-archivesbyyear()
 	.archives-byyear
 		.archives-year
@@ -171,6 +176,10 @@ a:hover
 /*  3.  Main Content Styles
 /*-----------------------------------------------------------------------------------*/
 
+::selection {
+	background: color-subcolor;
+	color: #fff;
+}
 #header 
 	height 200px
 	margin-bottom: 1.2em
@@ -215,10 +224,17 @@ a:hover
 		width: 70%
 		margin: 0 auto
 		.article-meta
-			position: absolute
-			left: -250px
-			top: 0
-			max-width: 250px
+			margin: 0 -200px;
+			.article-date
+				display: none;
+			.article-title
+				font-size: 3em;
+				margin-bottom: 2em
+				font-weight: 200;
+		.article-date-true
+			position: absolute;
+			margin-left: -200px;
+			color: #999;
 	.wrap.otherpage
 		.article-date
 			display: none;
@@ -378,9 +394,7 @@ a:hover
 				font-size: 1em
 			.article
 				padding: 0
-				.article-meta
-					position: static
-					max-width: 100%
+				mq-article-meta()
 		.wrap.homepage
 			mq-article()
 		.wrap.archivespage
@@ -399,9 +413,7 @@ a:hover
 		.wrap.articlepage
 			width:80%
 			.article
-				.article-meta
-					position: static
-					max-width: 100%
+				mq-article-meta()
 		.wrap.homepage
 			mq-article()
 		.wrap.archivespage
